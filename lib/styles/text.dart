@@ -1,4 +1,4 @@
 class CustomText {
-  static const regular = 7.0;
-  static const bold = 10.0;
+  static const regular = 15.0;
+  static const bold = 20.0;
 }

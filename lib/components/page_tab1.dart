@@ -1,4 +1,6 @@
+import 'package:adagri/styles/text.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../styles/colors.dart';
 
@@ -341,29 +343,72 @@ class PageOne extends StatelessWidget {
             Expanded(
                 child: ListView.builder(
               itemBuilder: (BuildContext ctx, int index) {
-                return Padding(
-                  padding: const EdgeInsets.all(20),
-                  child: Card(
-                    shape: Border.all(
-                      width: 5,
+                return Column(
+                  children: <Widget>[
+                    Padding(
+                      padding: EdgeInsets.all(20),
+                      child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Repositorio",
+                              style: TextStyle(
+                                  fontSize: CustomText.bold,
+                                  color: Colors.blue),
+                            ),
+                            Text(
+                              "Descricao",
+                              style: TextStyle(
+                                  fontSize: CustomText.regular,
+                                  color: CustomColors.slateGrey),
+                            ),
+                            Row(
+                              children: [
+                                Row(
+                                  children: [
+                                    Icon(
+                                      Icons.code,
+                                      color: CustomColors.slateGreyTwo,
+                                      size: 30,
+                                    ),
+                                    SizedBox(
+                                      width: 5,
+                                    ),
+                                    Text("Linguagem",
+                                        style: TextStyle(
+                                            color: CustomColors.slateGrey)),
+                                  ],
+                                ),
+                                SizedBox(
+                                  width: 15,
+                                ),
+                                Row(
+                                  children: [
+                                    FaIcon(
+                                      FontAwesomeIcons.codeBranch,
+                                      size: 20,
+                                      color: CustomColors.slateGreyTwo,
+                                    ),
+                                    SizedBox(
+                                      width: 5,
+                                    ),
+                                    Text("100",
+                                        style: TextStyle(
+                                            color: CustomColors.slateGrey)),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ]),
                     ),
-                    elevation: 20,
-                    color: Colors.black,
-                    child: Column(
-                      children: <Widget>[
-                        Text("Searchbar"),
-                        Text(a[index]),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        const Icon(
-                          Icons.favorite,
-                          color: Colors.yellow,
-                          size: 40,
-                        ),
-                      ],
+                    Divider(
+                      color: CustomColors.slateGreyTwo,
+                      height: 20,
+                      thickness: 0.5,
+                      indent: 0,
+                      endIndent: 0,
                     ),
-                  ),
+                  ],
                 );
               },
               itemCount: a.length,

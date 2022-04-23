@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../styles/colors.dart';
+
 class PageOne extends StatelessWidget {
   List a = [
     "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_960_720.jpg",
@@ -310,7 +312,32 @@ class PageOne extends StatelessWidget {
         height: MediaQuery.of(context).size.height,
         child: Column(
           children: [
-            Text("Teste"),
+            Padding(
+              padding: EdgeInsets.all(22),
+              child: TextField(
+                  style: TextStyle(color: CustomColors.slateGreyTwo),
+                  onChanged: (val) {
+                    print("Valor");
+                  },
+                  decoration: InputDecoration(
+                    hintStyle: TextStyle(color: CustomColors.slateGreyTwo),
+                    contentPadding: EdgeInsets.symmetric(vertical: 15.0),
+                    fillColor: Colors.white,
+                    filled: true,
+                    enabledBorder: OutlineInputBorder(
+                        borderSide:
+                            BorderSide(color: CustomColors.slateGreyTwo)),
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(0.0),
+                        borderSide:
+                            BorderSide(color: CustomColors.slateGreyTwo)),
+                    hintText: 'Filter by name',
+                    prefixIcon: Icon(
+                      Icons.search,
+                      size: 30.0,
+                    ),
+                  )),
+            ),
             Expanded(
                 child: ListView.builder(
               itemBuilder: (BuildContext ctx, int index) {

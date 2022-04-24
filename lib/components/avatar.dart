@@ -19,8 +19,12 @@ class _HeaderState extends State<Header> {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           CircleAvatar(
-            maxRadius: 40,
-            backgroundColor: Colors.brown.shade800,
+            child: ClipOval(
+              child: Image.network(
+                'https://avatars.githubusercontent.com/u/48102820?v=4',
+              ),
+            ),
+            radius: 40,
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,

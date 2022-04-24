@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class PageTwo extends StatelessWidget {
+class Starred extends StatelessWidget {
   final List<String> listasItens = [
     'Melancia',
     'Maracuja',
@@ -278,6 +278,8 @@ class PageTwo extends StatelessWidget {
     'Maracuja',
     'Limao',
   ];
+
+ Starred({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return ListView.builder(

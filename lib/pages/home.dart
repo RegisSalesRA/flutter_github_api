@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import '../components/avatar.dart';
-import '../components/page_tab1.dart';
-import '../components/page_tab2.dart';
+import 'repository.dart';
+import 'starred.dart';
 import '../styles/colors.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class Home extends StatefulWidget {
+  const Home({Key? key}) : super(key: key);
+
   @override
   State<Home> createState() => _HomeState();
 }
@@ -43,7 +45,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
             ],
           ),
         ),
-        body: Container(
+        body: SizedBox(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
           child: Column(children: [
@@ -59,16 +61,16 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Text('Repositorios'),
+                      const Text('Reposotorios'),
                       const SizedBox(width: 8),
                       Container(
                         width: 27.0,
                         height: 20.0,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           borderRadius: BorderRadius.all(Radius.circular(30.0)),
                           color: CustomColors.whiteTwo,
                         ),
-                        child: Center(
+                        child: const Center(
                             child: Text("100",
                                 style: TextStyle(
                                     color: CustomColors.slateGreyTwo))),
@@ -80,16 +82,16 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Text('Starred'),
+                      const Text('Starred'),
                       const SizedBox(width: 8),
                       Container(
                         width: 27.0,
                         height: 20.0,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           borderRadius: BorderRadius.all(Radius.circular(30.0)),
                           color: CustomColors.whiteTwo,
                         ),
-                        child: Center(
+                        child: const Center(
                             child: Text("100",
                                 style: TextStyle(
                                     color: CustomColors.slateGreyTwo))),
@@ -102,7 +104,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
             Expanded(
               child: TabBarView(
                 controller: _tabController,
-                children: [PageOne(), PageTwo()],
+                children: [Repository(), Starred()],
               ),
             )
           ]),

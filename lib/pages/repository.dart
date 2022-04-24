@@ -4,8 +4,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../styles/colors.dart';
 
-class PageOne extends StatelessWidget {
-  List a = [
+class Repository extends StatelessWidget {
+  final List a = [
     "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_960_720.jpg",
     "https://cdn.pixabay.com/photo/2016/05/05/02/37/sunset-1373171_960_720.jpg",
     "https://cdn.pixabay.com/photo/2017/02/01/22/02/mountain-landscape-2031539_960_720.jpg",
@@ -307,34 +307,37 @@ class PageOne extends StatelessWidget {
     "https://cdn.pixabay.com/photo/2013/11/28/10/03/autumn-219972_960_720.jpg",
     "https://cdn.pixabay.com/photo/2017/12/17/19/08/away-3024773_960_720.jpg",
   ];
+
+  Repository({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
         child: Column(
           children: [
             Padding(
-              padding: EdgeInsets.all(22),
+              padding: const EdgeInsets.all(22),
               child: TextField(
-                  style: TextStyle(color: CustomColors.slateGreyTwo),
+                  style: const TextStyle(color: CustomColors.slateGreyTwo),
                   onChanged: (val) {
                     print("Valor");
                   },
                   decoration: InputDecoration(
-                    hintStyle: TextStyle(color: CustomColors.slateGreyTwo),
-                    contentPadding: EdgeInsets.symmetric(vertical: 15.0),
+                    hintStyle:
+                        const TextStyle(color: CustomColors.slateGreyTwo),
+                    contentPadding: const EdgeInsets.symmetric(vertical: 15.0),
                     fillColor: Colors.white,
                     filled: true,
-                    enabledBorder: OutlineInputBorder(
+                    enabledBorder: const OutlineInputBorder(
                         borderSide:
                             BorderSide(color: CustomColors.slateGreyTwo)),
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(0.0),
                         borderSide:
-                            BorderSide(color: CustomColors.slateGreyTwo)),
+                            const BorderSide(color: CustomColors.slateGreyTwo)),
                     hintText: 'Filter by name',
-                    prefixIcon: Icon(
+                    prefixIcon: const Icon(
                       Icons.search,
                       size: 30.0,
                     ),
@@ -346,17 +349,17 @@ class PageOne extends StatelessWidget {
                 return Column(
                   children: <Widget>[
                     Padding(
-                      padding: EdgeInsets.all(20),
+                      padding: const EdgeInsets.all(20),
                       child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
+                            const Text(
                               "Repositorio",
                               style: TextStyle(
                                   fontSize: CustomText.bold,
                                   color: Colors.blue),
                             ),
-                            Text(
+                            const Text(
                               "Descricao",
                               style: TextStyle(
                                   fontSize: CustomText.regular,
@@ -365,7 +368,7 @@ class PageOne extends StatelessWidget {
                             Row(
                               children: [
                                 Row(
-                                  children: [
+                                  children: const [
                                     Icon(
                                       Icons.code,
                                       color: CustomColors.slateGreyTwo,
@@ -379,11 +382,11 @@ class PageOne extends StatelessWidget {
                                             color: CustomColors.slateGrey)),
                                   ],
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   width: 15,
                                 ),
                                 Row(
-                                  children: [
+                                  children: const [
                                     FaIcon(
                                       FontAwesomeIcons.codeBranch,
                                       size: 20,
@@ -401,7 +404,7 @@ class PageOne extends StatelessWidget {
                             ),
                           ]),
                     ),
-                    Divider(
+                    const Divider(
                       color: CustomColors.slateGreyTwo,
                       height: 20,
                       thickness: 0.5,

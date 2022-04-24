@@ -29,9 +29,7 @@ class _RepositoryState extends State<Repository> {
   @override
   Widget build(BuildContext context) {
     final repositorysList = Provider.of<RepositoryState>(context).repos;
-    final casa = "Casa";
-    final casa2 = "Casa 2";
-    print(repositorysList);
+    //  print(repositorysList);
     return SizedBox(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
@@ -69,7 +67,6 @@ class _RepositoryState extends State<Repository> {
                 child: ListView.builder(
               itemCount: repositorysList.length,
               itemBuilder: (ctx, i) {
-                //print(repositorysList);
                 return Column(
                   children: <Widget>[
                     Padding(
@@ -84,8 +81,9 @@ class _RepositoryState extends State<Repository> {
                                   color: Colors.blue),
                             ),
                             Text(
-                              "Descricao",
+                              repositorysList[i].description.toString(),
                               style: TextStyle(
+                                  overflow: TextOverflow.ellipsis,
                                   fontSize: CustomText.regular,
                                   color: CustomColors.slateGrey),
                             ),
@@ -101,7 +99,7 @@ class _RepositoryState extends State<Repository> {
                                     SizedBox(
                                       width: 5,
                                     ),
-                                    Text("Linguagem",
+                                    Text(repositorysList[i].language.toString(),
                                         style: TextStyle(
                                             color: CustomColors.slateGrey)),
                                   ],
@@ -110,7 +108,7 @@ class _RepositoryState extends State<Repository> {
                                   width: 15,
                                 ),
                                 Row(
-                                  children: const [
+                                  children: [
                                     FaIcon(
                                       FontAwesomeIcons.codeBranch,
                                       size: 20,
@@ -119,8 +117,9 @@ class _RepositoryState extends State<Repository> {
                                     SizedBox(
                                       width: 5,
                                     ),
-                                    Text("100",
+                                    Text(repositorysList[i].name.toString(),
                                         style: TextStyle(
+                                            overflow: TextOverflow.ellipsis,
                                             color: CustomColors.slateGrey)),
                                   ],
                                 ),

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import '../components/avatar.dart';
+import 'package:provider/provider.dart';
+import '../widgets/avatar.dart';
+import '../services/apiRepository.dart';
 import 'repository.dart';
 import 'starred.dart';
 import '../styles/colors.dart';
@@ -15,6 +17,18 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
   TabController? _tabController;
   ScrollController? _scrollViewController;
+
+  bool _init = true;
+  bool _isLoading = true;
+  @override
+  void didChangeDependencies() async {
+    if (_init) {
+      _isLoading = await Provider.of<RepositoryState>(context).getRepos();
+      setState(() {});
+    }
+    _init = false;
+    super.didChangeDependencies();
+  }
 
   @override
   void initState() {
@@ -32,6 +46,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    final repositorysList = Provider.of<RepositoryState>(context).repos;
     return Scaffold(
         appBar: AppBar(
           backgroundColor: CustomColors.slateGreyTwo,
@@ -70,8 +85,8 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                           borderRadius: BorderRadius.all(Radius.circular(30.0)),
                           color: CustomColors.whiteTwo,
                         ),
-                        child: const Center(
-                            child: Text("100",
+                        child: Center(
+                            child: Text(repositorysList.length.toString(),
                                 style: TextStyle(
                                     color: CustomColors.slateGreyTwo))),
                       )

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-
+import 'package:provider/provider.dart';
+import '../services/apiProfile.dart';
 import '../styles/colors.dart';
 import '../styles/text.dart';
 
@@ -11,8 +12,22 @@ class Header extends StatefulWidget {
 }
 
 class _HeaderState extends State<Header> {
+  bool _init = true;
+  bool _isLoading = true;
+  @override
+  void didChangeDependencies() async {
+    if (_init) {
+      _isLoading = await Provider.of<ProfileState>(context).getUser();
+      setState(() {});
+    }
+    _init = false;
+    super.didChangeDependencies();
+  }
+
   @override
   Widget build(BuildContext context) {
+    final profileUser = Provider.of<ProfileState>(context).perfil;
+    print(profileUser);
     return Padding(
       padding: const EdgeInsets.all(20),
       child: Row(
@@ -28,9 +43,9 @@ class _HeaderState extends State<Header> {
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
+            children: [
               Text(
-                "Roger Ramos",
+                "dawd",
                 style: TextStyle(
                     fontSize: CustomText.bold, fontWeight: FontWeight.bold),
               ),

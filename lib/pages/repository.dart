@@ -1,35 +1,19 @@
-import 'package:adagri/services/apiRepository.dart';
+
 import 'package:adagri/styles/text.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:provider/provider.dart';
-
 import '../styles/colors.dart';
 
 class Repository extends StatefulWidget {
-  Repository({Key? key}) : super(key: key);
-
+  Repository({Key? key, required this.repositorios}) : super(key: key);
+  List<dynamic> repositorios;
   @override
   State<Repository> createState() => _RepositoryState();
 }
 
 class _RepositoryState extends State<Repository> {
-  bool _init = true;
-  bool _isLoading = true;
-  @override
-  void didChangeDependencies() async {
-    if (_init) {
-      _isLoading = await Provider.of<RepositoryState>(context).getRepos();
-      setState(() {});
-    }
-    _init = false;
-    super.didChangeDependencies();
-  }
-
   @override
   Widget build(BuildContext context) {
-    final repositorysList = Provider.of<RepositoryState>(context).repos;
-    //  print(repositorysList);
     return SizedBox(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
@@ -65,24 +49,24 @@ class _RepositoryState extends State<Repository> {
             ),
             Expanded(
                 child: ListView.builder(
-              itemCount: repositorysList.length,
+              itemCount: widget.repositorios.length,
               itemBuilder: (ctx, i) {
                 return Column(
                   children: <Widget>[
                     Padding(
-                      padding: EdgeInsets.all(20),
+                      padding: const EdgeInsets.all(20),
                       child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              repositorysList[i].name.toString(),
-                              style: TextStyle(
+                              widget.repositorios[i].name.toString(),
+                              style: const TextStyle(
                                   fontSize: CustomText.bold,
                                   color: Colors.blue),
                             ),
                             Text(
-                              repositorysList[i].description.toString(),
-                              style: TextStyle(
+                              widget.repositorios[i].description.toString(),
+                              style: const TextStyle(
                                   overflow: TextOverflow.ellipsis,
                                   fontSize: CustomText.regular,
                                   color: CustomColors.slateGrey),
@@ -91,16 +75,16 @@ class _RepositoryState extends State<Repository> {
                               children: [
                                 Row(
                                   children: [
-                                    Icon(
+                                    const Icon(
                                       Icons.code,
                                       color: CustomColors.slateGreyTwo,
                                       size: 30,
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       width: 5,
                                     ),
-                                    Text(repositorysList[i].language.toString(),
-                                        style: TextStyle(
+                                    Text(widget.repositorios[i].language.toString(),
+                                        style: const TextStyle(
                                             color: CustomColors.slateGrey)),
                                   ],
                                 ),
@@ -108,7 +92,7 @@ class _RepositoryState extends State<Repository> {
                                   width: 15,
                                 ),
                                 Row(
-                                  children: [
+                                  children: const [
                                     FaIcon(
                                       FontAwesomeIcons.codeBranch,
                                       size: 20,
@@ -117,7 +101,7 @@ class _RepositoryState extends State<Repository> {
                                     SizedBox(
                                       width: 5,
                                     ),
-                                    Text(repositorysList[i].name.toString(),
+                                    Text("20",
                                         style: TextStyle(
                                             overflow: TextOverflow.ellipsis,
                                             color: CustomColors.slateGrey)),

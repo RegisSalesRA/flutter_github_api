@@ -1,4 +1,3 @@
-import 'package:adagri/services/apiProfile.dart';
 import 'package:adagri/services/apiRepository.dart';
 import 'package:flutter/material.dart';
 import 'package:adagri/pages/home.dart';
@@ -15,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (ctx) => RepositoryState()),
-        ChangeNotifierProvider(create: (ctx) => ProfileState())
+     
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

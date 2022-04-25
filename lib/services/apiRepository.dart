@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
@@ -15,6 +17,7 @@ class RepositoryState with ChangeNotifier {
       });
       var data = json.decode(response.body) as List;
       List<Repository> temp = [];
+      // ignore: avoid_function_literals_in_foreach_calls
       data.forEach((element) {
         Repository repo = Repository.fromJson(element);
         temp.add(repo);
@@ -39,6 +42,7 @@ class RepositoryState with ChangeNotifier {
       });
       var data = json.decode(response.body) as List;
       List<Repository> temp = [];
+      // ignore: avoid_function_literals_in_foreach_calls
       data.forEach((element) {
         Repository repo = Repository.fromJson(element);
         temp.add(repo);

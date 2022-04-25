@@ -19,11 +19,11 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
   ScrollController? _scrollViewController;
 
   bool _init = true;
-  bool _isLoading = true;
+
   @override
   void didChangeDependencies() async {
     if (_init) {
-      _isLoading = await Provider.of<RepositoryState>(context).getRepos();
+      await Provider.of<RepositoryState>(context).getRepos();
       setState(() {});
     }
     _init = false;
@@ -64,7 +64,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
           child: Column(children: [
-            const Header(),
+            Header(),
             TabBar(
               indicatorColor: CustomColors.rustyOrange,
               labelColor: Colors.black,
@@ -87,7 +87,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                         ),
                         child: Center(
                             child: Text(repositorysList.length.toString(),
-                                style: TextStyle(
+                                style: const TextStyle(
                                     color: CustomColors.slateGreyTwo))),
                       )
                     ],
@@ -119,7 +119,12 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
             Expanded(
               child: TabBarView(
                 controller: _tabController,
-                children: [Repository(), Starred()],
+                children: [
+                  Repository(
+                    repositorios: repositorysList,
+                  ),
+                  Starred()
+                ],
               ),
             )
           ]),

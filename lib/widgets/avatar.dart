@@ -12,22 +12,8 @@ class Header extends StatefulWidget {
 }
 
 class _HeaderState extends State<Header> {
-  bool _init = true;
-  bool _isLoading = true;
-  @override
-  void didChangeDependencies() async {
-    if (_init) {
-      _isLoading = await Provider.of<ProfileState>(context).getUser();
-      setState(() {});
-    }
-    _init = false;
-    super.didChangeDependencies();
-  }
-
   @override
   Widget build(BuildContext context) {
-    final profileUser = Provider.of<ProfileState>(context).perfil;
-    print(profileUser);
     return Padding(
       padding: const EdgeInsets.all(20),
       child: Row(

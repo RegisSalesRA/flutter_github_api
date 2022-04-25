@@ -238,6 +238,7 @@ class Repository {
   }
 
   Map<String, dynamic> toJson() {
+    // ignore: prefer_collection_literals
     final Map<String, dynamic> data = Map<String, dynamic>();
     data["id"] = id;
     data["node_id"] = nodeId;

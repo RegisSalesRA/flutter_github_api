@@ -10,12 +10,12 @@ class Starred extends StatefulWidget {
 }
 
 class _StarredState extends State<Starred> {
-  late Future<Album> futureAlbum;
+  late Future<Profile> futureProfile;
 
   @override
   void initState() {
     super.initState();
-    futureAlbum = fetchAlbum();
+    futureProfile = fetchProfile();
   }
 
   @override
@@ -23,23 +23,4 @@ class _StarredState extends State<Starred> {
     return Text("Alow");
   }
 }
-
-
-// Center(
-//       child: FutureBuilder<Album>(
-//         future: futureAlbum,
-//         builder: (context, snapshot) {
-//           if (snapshot.hasData) {
-//             return Container(
-//               child: Column(children: [
-//                 // Image.network(snapshot.data!.avatar_url),
-//                 Text(snapshot.data!.login)
-//               ]),
-//             );
-//           } else if (snapshot.hasError) {
-//             return Text('${snapshot.error}');
-//           }
-//           return const CircularProgressIndicator();
-//         },
-//       ),
-//     );
+ 

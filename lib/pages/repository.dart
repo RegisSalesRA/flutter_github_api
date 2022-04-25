@@ -1,17 +1,30 @@
-
 import 'package:adagri/styles/text.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../styles/colors.dart';
+import '../models/repository.dart';
 
-class Repository extends StatefulWidget {
-  Repository({Key? key, required this.repositorios}) : super(key: key);
+class ListComponent extends StatefulWidget {
+  ListComponent({Key? key, required this.repositorios}) : super(key: key);
   List<dynamic> repositorios;
+
   @override
-  State<Repository> createState() => _RepositoryState();
+  State<ListComponent> createState() => _ListComponentState();
 }
 
-class _RepositoryState extends State<Repository> {
+class _ListComponentState extends State<ListComponent> {
+  List<Repository> TestesFilter = [];
+
+  void filtrarItens(valor) {
+    var TesteList = widget.repositorios
+        .where((element) => element.name!.contains("valor"))
+        .toList();
+    for (Repository teste in TesteList) {
+      TestesFilter.add(teste);
+    }
+    print(TestesFilter);
+  }
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -23,9 +36,8 @@ class _RepositoryState extends State<Repository> {
               padding: const EdgeInsets.all(22),
               child: TextField(
                   style: const TextStyle(color: CustomColors.slateGreyTwo),
-                  onChanged: (val) {
-                    // ignore: avoid_print
-                    print("Valor");
+                  onSubmitted: (val) {
+                    filtrarItens(val);
                   },
                   decoration: InputDecoration(
                     hintStyle:
@@ -83,7 +95,9 @@ class _RepositoryState extends State<Repository> {
                                     const SizedBox(
                                       width: 5,
                                     ),
-                                    Text(widget.repositorios[i].language.toString(),
+                                    Text(
+                                        widget.repositorios[i].language
+                                            .toString(),
                                         style: const TextStyle(
                                             color: CustomColors.slateGrey)),
                                   ],

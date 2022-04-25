@@ -1,6 +1,7 @@
+import 'package:adagri/models/repository.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../widgets/avatar.dart';
+import '../widgets/header.dart';
 import '../services/apiRepository.dart';
 import 'repository.dart';
 import 'starred.dart';
@@ -47,7 +48,19 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     final repositorysList = Provider.of<RepositoryState>(context).repos;
+    
+    // List<Repository> foodsFilter = [];
+
+    // void filtrarItens() {
+    //   var foodList =
+    //       repositorysList.where((element) => element.name!.contains("Django")).toList();
+    //   for (Repository food in foodList) {
+    //     foodsFilter.add(food);
+    //   }
+    // }
+
     return Scaffold(
+    
         appBar: AppBar(
           backgroundColor: CustomColors.slateGreyTwo,
           title: Row(
@@ -120,7 +133,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
               child: TabBarView(
                 controller: _tabController,
                 children: [
-                  Repository(
+                  ListComponent(
                     repositorios: repositorysList,
                   ),
                   Starred()

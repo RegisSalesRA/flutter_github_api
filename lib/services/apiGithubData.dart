@@ -4,9 +4,11 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import '../models/repository.dart';
+import '../models/starred.dart';
 
 class RepositoryState with ChangeNotifier {
   List<Repository> _repositorys = [];
+  List<Starred> _starreds = [];
 
   Future<bool> getRepos() async {
     var url = Uri.parse('https://api.github.com/users/RegisSalesRA/repos');
@@ -32,22 +34,21 @@ class RepositoryState with ChangeNotifier {
     }
   }
 
-  Future<bool> getContribus() async {
-    var url = Uri.parse(
-        'https://api.github.com/repos/RegisSalesRA/Dart/contributors');
+  Future<bool> getStarred() async {
+    var url = Uri.parse('https://api.github.com/users/RegisSalesRA/starred');
 
     try {
       http.Response response = await http.get(url, headers: {
         "Content-Type": "application/json",
       });
       var data = json.decode(response.body) as List;
-      List<Repository> temp = [];
+      List<Starred> temp = [];
       // ignore: avoid_function_literals_in_foreach_calls
       data.forEach((element) {
-        Repository repo = Repository.fromJson(element);
-        temp.add(repo);
+        Starred starrepo = Starred.fromJson(element);
+        temp.add(starrepo);
       });
-      _repositorys = temp;
+      _starreds = temp;
       notifyListeners();
       return true;
     } catch (e) {
@@ -59,5 +60,9 @@ class RepositoryState with ChangeNotifier {
 
   List<Repository> get repos {
     return [..._repositorys];
+  }
+
+  List<Starred> get starredRepos {
+    return [..._starreds];
   }
 }

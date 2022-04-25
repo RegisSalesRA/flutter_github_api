@@ -1,8 +1,10 @@
+// ignore_for_file: file_names, avoid_print, must_be_immutable
+
 import 'package:adagri/styles/text.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../styles/colors.dart';
-import '../models/repository.dart';
+
 
 class ListComponent extends StatefulWidget {
   ListComponent({Key? key, required this.repositorios}) : super(key: key);
@@ -13,18 +15,8 @@ class ListComponent extends StatefulWidget {
 }
 
 class _ListComponentState extends State<ListComponent> {
-  List<Repository> TestesFilter = [];
-
-  void filtrarItens(valor) {
-    var TesteList = widget.repositorios
-        .where((element) => element.name!.contains("valor"))
-        .toList();
-    for (Repository teste in TesteList) {
-      TestesFilter.add(teste);
-    }
-    print(TestesFilter);
-  }
-
+ 
+ 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -37,7 +29,7 @@ class _ListComponentState extends State<ListComponent> {
               child: TextField(
                   style: const TextStyle(color: CustomColors.slateGreyTwo),
                   onSubmitted: (val) {
-                    filtrarItens(val);
+                    print("");
                   },
                   decoration: InputDecoration(
                     hintStyle:

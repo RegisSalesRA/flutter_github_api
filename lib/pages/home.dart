@@ -1,10 +1,8 @@
-import 'package:adagri/models/repository.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../widgets/header.dart';
-import '../services/apiRepository.dart';
-import 'repository.dart';
-import 'starred.dart';
+import '../services/apiGithubData.dart';
+import '../widgets/listComponents.dart';
 import '../styles/colors.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -24,7 +22,9 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
   @override
   void didChangeDependencies() async {
     if (_init) {
+      Provider.of<RepositoryState>(context).getStarred();
       await Provider.of<RepositoryState>(context).getRepos();
+
       setState(() {});
     }
     _init = false;
@@ -48,19 +48,9 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     final repositorysList = Provider.of<RepositoryState>(context).repos;
-    
-    // List<Repository> foodsFilter = [];
-
-    // void filtrarItens() {
-    //   var foodList =
-    //       repositorysList.where((element) => element.name!.contains("Django")).toList();
-    //   for (Repository food in foodList) {
-    //     foodsFilter.add(food);
-    //   }
-    // }
+    final starredsList = Provider.of<RepositoryState>(context).starredRepos;
 
     return Scaffold(
-    
         appBar: AppBar(
           backgroundColor: CustomColors.slateGreyTwo,
           title: Row(
@@ -77,7 +67,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
           child: Column(children: [
-            Header(),
+            const Header(),
             TabBar(
               indicatorColor: CustomColors.rustyOrange,
               labelColor: Colors.black,
@@ -119,9 +109,9 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                           borderRadius: BorderRadius.all(Radius.circular(30.0)),
                           color: CustomColors.whiteTwo,
                         ),
-                        child: const Center(
-                            child: Text("100",
-                                style: TextStyle(
+                        child: Center(
+                            child: Text(starredsList.length.toString(),
+                                style: const TextStyle(
                                     color: CustomColors.slateGreyTwo))),
                       )
                     ],
@@ -136,7 +126,9 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                   ListComponent(
                     repositorios: repositorysList,
                   ),
-                  Starred()
+                  ListComponent(
+                    repositorios: starredsList,
+                  ),
                 ],
               ),
             )

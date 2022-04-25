@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import '../services/apiProfile.dart';
-import '../services/apiStarred.dart';
 import '../styles/colors.dart';
 import '../styles/text.dart';
 
@@ -44,14 +42,14 @@ class _HeaderState extends State<Header> {
                     children: [
                       Text(
                         snapshot.data!.login,
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontSize: CustomText.bold,
                             fontWeight: FontWeight.bold),
                       ),
-                      SizedBox(height: 5),
+                      const SizedBox(height: 5),
                       Text(
                         snapshot.data!.bio,
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontSize: CustomText.regular,
                             color: CustomColors.warmGrey),
                       )

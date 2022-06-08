@@ -1,3 +1,4 @@
+import 'package:adagri/widgets/searchInput.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../widgets/header.dart';
@@ -14,10 +15,13 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
+  final _serachControllerRepo = TextEditingController();
+  final _serachControllerStarred = TextEditingController();
   TabController? _tabController;
   ScrollController? _scrollViewController;
-
   bool _init = true;
+  List<dynamic> searchListRepositorio = [];
+  List<dynamic> searchListStarred = [];
 
   @override
   void didChangeDependencies() async {
@@ -40,15 +44,48 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
 
   @override
   void dispose() {
+    super.dispose();
     _tabController?.dispose();
     _scrollViewController?.dispose();
-    super.dispose();
+    _serachControllerRepo;
+    _serachControllerStarred;
   }
 
   @override
   Widget build(BuildContext context) {
     final repositorysList = Provider.of<RepositoryState>(context).repos;
     final starredsList = Provider.of<RepositoryState>(context).starredRepos;
+
+    void searchFunction(valorInputSearch) {
+      if (_serachControllerRepo.text.isEmpty ||
+          _serachControllerRepo.text == "") {}
+      setState(() {
+        searchListRepositorio = [];
+      });
+      for (var iten in repositorysList) {
+        if (iten.name!.toLowerCase().startsWith(valorInputSearch)) {
+          setState(() {
+            searchListRepositorio.add(iten);
+          });
+        }
+      }
+    }
+
+    void searchFunction2(valorInputSearch) {
+      if (_serachControllerStarred.text.isEmpty ||
+          _serachControllerStarred.text == "") {}
+
+      setState(() {
+        searchListStarred = [];
+      });
+      for (var iten in starredsList) {
+        if (iten.name!.toLowerCase().startsWith(valorInputSearch)) {
+          setState(() {
+            searchListStarred.add(iten);
+          });
+        }
+      }
+    }
 
     return Scaffold(
         appBar: AppBar(
@@ -124,10 +161,24 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                 controller: _tabController,
                 children: [
                   ListComponent(
-                    repositorios: repositorysList,
+                    search: SearchInput(
+                      search: (val) {
+                        searchFunction(val);
+                      },
+                    ),
+                    repositorios: searchListRepositorio.isEmpty
+                        ? repositorysList
+                        : searchListRepositorio,
                   ),
                   ListComponent(
-                    repositorios: starredsList,
+                    search: SearchInput(
+                      search: (val) {
+                        searchFunction2(val);
+                      },
+                    ),
+                    repositorios: searchListStarred.isEmpty
+                        ? starredsList
+                        : searchListStarred,
                   ),
                 ],
               ),

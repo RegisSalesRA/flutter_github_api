@@ -5,18 +5,17 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../styles/colors.dart';
 
-
 class ListComponent extends StatefulWidget {
-  ListComponent({Key? key, required this.repositorios}) : super(key: key);
   List<dynamic> repositorios;
+  Widget search;
+  ListComponent({Key? key, required this.repositorios, required this.search})
+      : super(key: key);
 
   @override
   State<ListComponent> createState() => _ListComponentState();
 }
 
 class _ListComponentState extends State<ListComponent> {
- 
- 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -24,33 +23,7 @@ class _ListComponentState extends State<ListComponent> {
         height: MediaQuery.of(context).size.height,
         child: Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.all(22),
-              child: TextField(
-                  style: const TextStyle(color: CustomColors.slateGreyTwo),
-                  onSubmitted: (val) {
-                    print("");
-                  },
-                  decoration: InputDecoration(
-                    hintStyle:
-                        const TextStyle(color: CustomColors.slateGreyTwo),
-                    contentPadding: const EdgeInsets.symmetric(vertical: 15.0),
-                    fillColor: Colors.white,
-                    filled: true,
-                    enabledBorder: const OutlineInputBorder(
-                        borderSide:
-                            BorderSide(color: CustomColors.slateGreyTwo)),
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(0.0),
-                        borderSide:
-                            const BorderSide(color: CustomColors.slateGreyTwo)),
-                    hintText: 'Filter by name',
-                    prefixIcon: const Icon(
-                      Icons.search,
-                      size: 30.0,
-                    ),
-                  )),
-            ),
+            widget.search,
             Expanded(
                 child: ListView.builder(
               itemCount: widget.repositorios.length,
@@ -69,7 +42,10 @@ class _ListComponentState extends State<ListComponent> {
                                   color: Colors.blue),
                             ),
                             Text(
-                              widget.repositorios[i].description.toString(),
+                              widget.repositorios[i].description != null
+                                  ? widget.repositorios[i].description
+                                      .toString()
+                                  : "Nenhuma descrição",
                               style: const TextStyle(
                                   overflow: TextOverflow.ellipsis,
                                   fontSize: CustomText.regular,
@@ -88,8 +64,10 @@ class _ListComponentState extends State<ListComponent> {
                                       width: 5,
                                     ),
                                     Text(
-                                        widget.repositorios[i].language
-                                            .toString(),
+                                        widget.repositorios[i].language != null
+                                            ? widget.repositorios[i].language
+                                                .toString()
+                                            : "Nenhuma linguagem",
                                         style: const TextStyle(
                                             color: CustomColors.slateGrey)),
                                   ],

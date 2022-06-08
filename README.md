@@ -10,7 +10,7 @@
 ```
 
 - Clone o repositório:
-$ git clone https://github.com/DuhAlonso/picpay_clone.git
+$ git clone https://github.com/DuhAlonso/Flutter_Github_Api.git
 
 - Entre no diretório:
 $ cd flutter_github_api

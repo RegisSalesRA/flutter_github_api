@@ -1,6 +1,6 @@
-import 'package:adagri/services/apiGithubData.dart';
+import 'package:github/services/apiGithubData.dart';
 import 'package:flutter/material.dart';
-import 'package:adagri/pages/home.dart';
+import 'package:github/pages/home.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -14,11 +14,10 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (ctx) => RepositoryState()),
-     
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Flutter Hive',
+        title: 'Github Profile',
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),

@@ -1,4 +1,4 @@
-name: adagri
+name: github
 description: A new Flutter project.
 
 # The following line prevents the package from being accidentally published to
@@ -48,7 +48,24 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^1.0.0
+  flutter_native_splash: ^1.2.0
+  flutter_launcher_icons: ^0.9.1
+ 
 
+flutter_icons:
+  image_path: "assets/app/icon2.png"
+  ios: true
+  remove_alpha_ios: true
+  android: "launcher_icon"
+  #adaptive_icon_background: "#000000"
+  adaptive_icon_foreground: "assets/app/icon-android.png"
+
+
+flutter_native_splash:
+  color: "#FFFFFF"
+  image: assets/app/splash2.png #u must place logo.png in your assets folder
+  android: true
+  ios: true
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 

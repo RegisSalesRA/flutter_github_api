@@ -1,6 +1,6 @@
 // ignore_for_file: file_names
 
-import 'package:adagri/styles/colors.dart';
+import 'package:github/styles/colors.dart';
 import 'package:flutter/material.dart';
 
 class SearchInput extends StatelessWidget {

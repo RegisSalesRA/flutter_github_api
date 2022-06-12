@@ -24,7 +24,7 @@ Decidi realizar esse desafio de consumir uma api publica do github para aprender
 
 <h2>Screenshots</h2>
 
-<img src="https://github.com/RegisSalesRA/Flutter_Hive_Tasks/blob/master/assets/readme/splash.png" width="250"> <img src="https://github.com/RegisSalesRA/Flutter_Hive_Tasks/blob/master/assets/readme/home.png" width="250"> <img src="https://github.com/RegisSalesRA/Flutter_Hive_Tasks/blob/master/assets/readme/tecnicoPage.png" width="250"> 
+<img src="https://github.com/RegisSalesRA/Flutter_Github_Api/blob/master/assets/readme/logo.png" width="250"> <img src="https://github.com/RegisSalesRA/Flutter_Github_Api/blob/master/assets/readme/repositorios.png" width="250"> <img src="https://github.com/RegisSalesRA/Flutter_Github_Api/blob/master/assets/readme/starred.png" width="250"> 
 
 <p>
 </p>

@@ -2,7 +2,7 @@
 
 # Flutter Github
 
-Dados do meu repositorio nativo para o flutter
+Dados do meu repositorio do github para o flutter
 
 <h2>Índice 📋</h2>
 

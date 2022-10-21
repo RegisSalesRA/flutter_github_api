@@ -33,7 +33,8 @@ class _HeaderState extends State<Header> {
                 children: [
                   CircleAvatar(
                     child: ClipOval(
-                      child: Image.network(snapshot.data!.avatar_url),
+                      child:
+                          Image.network(snapshot.data!.avatar_url.toString()),
                     ),
                     radius: 40,
                   ),
@@ -41,14 +42,14 @@ class _HeaderState extends State<Header> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        snapshot.data!.login,
+                        snapshot.data!.login!,
                         style: const TextStyle(
                             fontSize: CustomText.bold,
                             fontWeight: FontWeight.bold),
                       ),
                       const SizedBox(height: 5),
                       Text(
-                        snapshot.data!.bio,
+                        snapshot.data!.bio ?? "Nenhuma Bio",
                         style: const TextStyle(
                             fontSize: CustomText.regular,
                             color: CustomColors.warmGrey),

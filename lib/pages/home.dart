@@ -22,7 +22,8 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
   bool _init = true;
   List<dynamic> searchListRepositorio = [];
   List<dynamic> searchListStarred = [];
-
+  String searchString = "";
+  String searchString2 = "";
   @override
   void didChangeDependencies() async {
     if (_init) {
@@ -161,7 +162,13 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                 controller: _tabController,
                 children: [
                   ListComponent(
+                    searchString: searchString,
                     search: SearchInput(
+                      onFilter: (value) {
+                        setState(() {
+                          searchString = value.toLowerCase().toString();
+                        });
+                      },
                       search: (val) {
                         searchFunction(val);
                       },
@@ -171,7 +178,13 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                         : searchListRepositorio,
                   ),
                   ListComponent(
+                    searchString: searchString2,
                     search: SearchInput(
+                      onFilter: (value) {
+                        setState(() {
+                          searchString2 = value.toLowerCase().toString();
+                        });
+                      },
                       search: (val) {
                         searchFunction2(val);
                       },

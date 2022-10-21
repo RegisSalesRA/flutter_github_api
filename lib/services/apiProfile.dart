@@ -16,9 +16,9 @@ Future<Profile> fetchProfile() async {
 }
 
 class Profile {
-  final String login;
-  final String avatar_url;
-  final String bio;
+  final String? login;
+  final String? avatar_url;
+  final String? bio;
   const Profile(
       {required this.login, required this.avatar_url, required this.bio});
 

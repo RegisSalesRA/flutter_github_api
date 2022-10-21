@@ -5,13 +5,16 @@ import 'package:flutter/material.dart';
 
 class SearchInput extends StatelessWidget {
   final Function search;
-  const SearchInput({Key? key, required this.search}) : super(key: key);
+  final Function(String)? onFilter;
+  const SearchInput({Key? key, required this.search, required this.onFilter})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Padding(
         padding: const EdgeInsets.all(22),
         child: TextField(
+            onChanged: onFilter,
             style: const TextStyle(color: CustomColors.slateGreyTwo),
             onSubmitted: (val) {
               search(val);

@@ -4,9 +4,8 @@ import 'package:github/styles/colors.dart';
 import 'package:flutter/material.dart';
 
 class SearchInput extends StatelessWidget {
-  final Function search;
   final Function(String)? onFilter;
-  const SearchInput({Key? key, required this.search, required this.onFilter})
+  const SearchInput({Key? key,  required this.onFilter})
       : super(key: key);
 
   @override
@@ -16,9 +15,6 @@ class SearchInput extends StatelessWidget {
         child: TextField(
             onChanged: onFilter,
             style: const TextStyle(color: CustomColors.slateGreyTwo),
-            onSubmitted: (val) {
-              search(val);
-            },
             decoration: InputDecoration(
               hintStyle: const TextStyle(color: CustomColors.slateGreyTwo),
               contentPadding: const EdgeInsets.symmetric(vertical: 15.0),

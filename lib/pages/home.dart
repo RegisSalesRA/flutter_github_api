@@ -20,8 +20,6 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
   TabController? _tabController;
   ScrollController? _scrollViewController;
   bool _init = true;
-  List<dynamic> searchListRepositorio = [];
-  List<dynamic> searchListStarred = [];
   String searchString = "";
   String searchString2 = "";
   @override
@@ -56,37 +54,6 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
   Widget build(BuildContext context) {
     final repositorysList = Provider.of<RepositoryState>(context).repos;
     final starredsList = Provider.of<RepositoryState>(context).starredRepos;
-
-    void searchFunction(valorInputSearch) {
-      if (_serachControllerRepo.text.isEmpty ||
-          _serachControllerRepo.text == "") {}
-      setState(() {
-        searchListRepositorio = [];
-      });
-      for (var iten in repositorysList) {
-        if (iten.name!.toLowerCase().startsWith(valorInputSearch)) {
-          setState(() {
-            searchListRepositorio.add(iten);
-          });
-        }
-      }
-    }
-
-    void searchFunction2(valorInputSearch) {
-      if (_serachControllerStarred.text.isEmpty ||
-          _serachControllerStarred.text == "") {}
-
-      setState(() {
-        searchListStarred = [];
-      });
-      for (var iten in starredsList) {
-        if (iten.name!.toLowerCase().startsWith(valorInputSearch)) {
-          setState(() {
-            searchListStarred.add(iten);
-          });
-        }
-      }
-    }
 
     return Scaffold(
         appBar: AppBar(
@@ -169,13 +136,8 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                           searchString = value.toLowerCase().toString();
                         });
                       },
-                      search: (val) {
-                        searchFunction(val);
-                      },
                     ),
-                    repositorios: searchListRepositorio.isEmpty
-                        ? repositorysList
-                        : searchListRepositorio,
+                    repositorios: repositorysList,
                   ),
                   ListComponent(
                     searchString: searchString2,
@@ -185,13 +147,8 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                           searchString2 = value.toLowerCase().toString();
                         });
                       },
-                      search: (val) {
-                        searchFunction2(val);
-                      },
                     ),
-                    repositorios: searchListStarred.isEmpty
-                        ? starredsList
-                        : searchListStarred,
+                    repositorios: starredsList,
                   ),
                 ],
               ),

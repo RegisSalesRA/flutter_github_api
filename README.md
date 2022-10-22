@@ -1,5 +1,3 @@
-<img src="https://img.shields.io/badge/Version-1.0.0+1-blue"> 
-
 # Flutter Github
 
 Dados do meu repositorio do github para o flutter
@@ -30,6 +28,9 @@ Decidi realizar esse desafio de consumir uma api publica do github para aprender
 </p>
 
 <h2>Sobre o desenvolvimento</h2>
+
+<img src="https://img.shields.io/badge/Flutter Version-3.3.2-blue"> <img src="https://img.shields.io/badge/Dart Version-2.18.1-blueviolet"> <img src="https://img.shields.io/badge/JDK version-11.0.16-yellowgreen">
+ 
 <p>
 Desenvolvimento focado em mostrar dados e repositorios que uso no github afim de transmitir também novos conhecimentos para demais pessoas
 </p>
